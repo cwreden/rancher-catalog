@@ -3,7 +3,7 @@
   version: "v9.0.5"
   description: "Git repository server with continuous integration and docker."
   uuid: gitlab-0
-  minimum_rancher_version: v1.0.0
+  minimum_rancher_version: v1.4.0
   questions:
       - variable: "gitlab_hostname"
         description: "Gitlab hostname (without uri scheme http:// or https://)"
