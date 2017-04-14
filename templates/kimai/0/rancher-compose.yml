@@ -1,0 +1,6 @@
+.catalog:
+  name: "Kimai Server"
+  version: "v1.1.0"
+  description: "Open source time tracking."
+  uuid: kimai-0
+  minimum_rancher_version: v1.4.0

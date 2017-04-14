@@ -1,0 +1,27 @@
+kimai-server:
+  image: maestroalubia/kimai:1.1.0
+  hostname: ${kimai_hostname}
+  depends_on:
+  - kimai-db
+
+kimai-db:
+  image: mariadb:10.1
+  environment:
+  - MYSQL_DATABASE=${kimai_database}
+  - MYSQL_USER=${kimai_user}
+  - MYSQL_PASSWORD=${kimai_password}
+  - MYSQL_ROOT_PASSWORD=${root_password}
+  labels:
+    io.rancher.sidekicks: kimai-data
+  volumes_from:
+  - kimai-data
+
+kimai-data:
+  labels:
+    io.rancher.container.start_once: 'true'
+  entrypoint:
+  - /bin/true
+  hostname: kimaidata
+  image: mariadb:10.1
+  volumes:
+  - /var/lib/mysql
