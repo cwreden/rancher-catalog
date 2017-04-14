@@ -1,6 +1,8 @@
 kimai-server:
   image: maestroalubia/kimai:1.1.0
   hostname: ${kimai_hostname}
+  links:
+  - kimai-db:db
 
 kimai-db:
   image: mariadb:10.1
