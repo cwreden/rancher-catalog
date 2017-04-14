@@ -4,3 +4,50 @@
   description: "Open source time tracking."
   uuid: kimai-0
   minimum_rancher_version: v1.4.0
+  questions:
+      - variable: "kimai_hostname"
+        description: "Kimai hostname (without uri scheme http:// or https://)"
+        label: "Hostname:"
+        required: true
+        type: "string"
+      - variable: "kimai_database"
+        description: "Datenbank Name"
+        label: "Datenbank Name:"
+        required: true
+        default: kimai
+        type: "string"
+      - variable: "kimai_user"
+        description: "Datenbank Benutzer"
+        label: "Datenbank Benutzer:"
+        required: true
+        default: kimai
+        type: "string"
+      - variable: "kimai_password"
+        description: "Datenbank Passwort"
+        label: "Datenbank Passwort:"
+        required: true
+        type: "string"
+      - variable: "root_password"
+        description: "Datenbank Root Passwort"
+        label: "Root Passwort:"
+        required: true
+        type: "string"
+
+kimai-server:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 80
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
+
+kimai-db:
+  scale: 1
+  retain_ip: true
+
+kimai-data:
+  scale: 1
+  retain_ip: true
