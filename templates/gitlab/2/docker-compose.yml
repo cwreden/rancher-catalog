@@ -5,8 +5,6 @@ services:
     hostname: ${gitlab_hostname}
     ports:
     - ${ssh_port}:22/tcp
-    labels:
-      io.rancher.sidekicks: gitlab-data
     volumes:
     - ${DIR}/etc:/etc/gitlab
     - ${DIR}/log:/var/log/gitlab
