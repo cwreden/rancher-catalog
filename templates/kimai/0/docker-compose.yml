@@ -11,17 +11,5 @@ kimai-db:
   - MYSQL_USER=${kimai_user}
   - MYSQL_PASSWORD=${kimai_password}
   - MYSQL_ROOT_PASSWORD=${root_password}
-  labels:
-    io.rancher.sidekicks: kimai-data
-  volumes_from:
-  - kimai-data
-
-kimai-data:
-  labels:
-    io.rancher.container.start_once: 'true'
-  entrypoint:
-  - /bin/true
-  hostname: kimaidata
-  image: mariadb:10.1
   volumes:
-  - /var/lib/mysql
+  - ${DIR}/data:/var/lib/mysql
