@@ -5,22 +5,26 @@
   uuid: gitlab-0
   minimum_rancher_version: v1.4.0
   questions:
-      - variable: "gitlab_hostname"
-        description: "Gitlab hostname (without uri scheme http:// or https://)"
-        label: "Hostname:"
-        required: true
-        default: "git.example.com"
-        type: "string"
-      - variable: "ssh_port"
-        description: "SSH port to expose on host. Will be used to bind TCP"
-        label: "SSH port:"
-        required: true
-        default: 22
-        type: "string"
+    - variable: "gitlab_hostname"
+      description: "Gitlab hostname (without uri scheme http:// or https://)"
+      label: "Hostname:"
+      required: true
+      default: "git.example.com"
+      type: "string"
+    - variable: "ssh_port"
+      description: "SSH port to expose on host. Will be used to bind TCP"
+      label: "SSH port:"
+      required: true
+      default: 22
+      type: "string"
+    - variable: "DIR"
+      description: "This is the folder where gitlab save his configuration and data"
+      label: "Local dir:"
+      required: true
+      type: "string"
 
 gitlab-server:
   scale: 1
-  retain_ip: true
   health_check:
     port: 80
     interval: 30000
@@ -28,7 +32,3 @@ gitlab-server:
     strategy: recreate
     response_timeout: 2000
     healthy_threshold: 2
-
-gitlab-data:
-  scale: 1
-  retain_ip: true
