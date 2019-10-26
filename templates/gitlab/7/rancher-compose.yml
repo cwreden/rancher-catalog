@@ -1,6 +1,6 @@
 .catalog:
   name: "GitLab Server"
-  version: "v10.6.0"
+  version: "v11.11.8"
   description: "Git repository server with continuous integration and docker."
   uuid: gitlab-0
   minimum_rancher_version: v1.5.5
